@@ -18,6 +18,10 @@ var dragging = false;
 // start animation on a canvas
 function start(idCanvas)
 {
+    var i = 0,
+      pos;
+
+    points = points || [];
     // initialise the canvas id (second parameter is fps)
     jc.clear(idCanvas);
     jc.start(idCanvas,25);
@@ -28,13 +32,11 @@ function start(idCanvas)
     // set up the timer
     timer = jc.circle(centre[0],centre[1]-clock_radius,15,'rgba(12,12,12,1)',1)
         .shadow({ x:5, y:5, blur:15, color:'rgba(128,128,128,0.5)' });
-    // p            .mousedown(function(){
-    //                 this.color('#00ff00');
-    //                             });
-    //
     // set up the points
-    //points = [jc.circle(pos[0]+offsets[0],pos[1]+offsets[1],0,'rgba(128,128,128,0.5)',1) for each (pos in pos_adj)];
-    points = [jc.circle(pos[1]+offsets[1],2*centre[1]-(pos[0]+offsets[0]),0,'rgba(128,128,128,0.5)',1) for each (pos in pos_adj)];
+    for (i = 0; i < pos_adj.length; i++) {
+      pos = pos_adj[i];
+      points[i] = jc.circle(pos[1] + offsets[1], 2 * centre[1] - (pos[0] + offsets[0]), 0, 'rgba(128, 128, 128, 0.5)', 1);
+    }
     // start
     running = true;
     set_day(0);
