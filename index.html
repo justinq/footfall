@@ -2,28 +2,53 @@
 layout: clean
 author: Justin Quillinan
 title: Footfall Clock
-title-url: index.html
+title-url:
 subtitle: by Justin Quillinan
 subtitle-url: /index.html
-footer: <a href="index.html">footfall clock</a>
+footer: <a href="">footfall clock</a>
 ---
 
 <script type="text/javascript" src="js/jCanvaScript.js"> </script>
 <script type="text/javascript" src="js/footfalldata.js"> </script>
 <script type="text/javascript" src="js/footfall.js"> </script>
 
-<p>
-Click start to begin the visualisation.
-<input type="button" onclick="start('footfallCanvas')" value="start"/>
-<input type="button" onclick="pause()" value="pause"/>
-<input type="button" onclick="resume()" value="resume"/>
+<script type="text/javascript">
+    var footfallStatus = -1;
+    function toggleFootfall()
+    {
+        switch(footfallStatus)
+        {
+            case 0:
+                footfallStatus = 1;
+                resume();
+                document.getElementById("footfallBtn").value="pause";
+                document.getElementById("footfallStatusText").innerHTML="pause";
+                break;
+            case 1:
+                footfallStatus = 0;
+                pause();
+                document.getElementById("footfallBtn").value="resume";
+                document.getElementById("footfallStatusText").innerHTML="resume";
+                break;
+            default:
+                footfallStatus = 1;
+                start('footfallCanvas');
+                document.getElementById("footfallBtn").value="pause";
+                document.getElementById("footfallStatusText").innerHTML="pause";
+                break;
+        }
+    }
+</script>
+
+<p style="margin:auto">
+Click to <span id="footfallStatusText">start</span> the visualisation. <input id="footfallBtn" type="button" onclick="toggleFootfall()" value="start"/>
 </p>
 
-<canvas id="footfallCanvas" class="footfallCanvas" width="600" height="600" >
+<canvas id="footfallCanvas" class="footfallCanvas" width="600" height="600" style="margin:auto">
     Your browser doesn't support canvas.
 </canvas>
 <p style="font-family:arial;color:gray;font-size:12px;">
-    Made by <a href="http://justinq.github.com/">Justin Quillinan</a> in about a day.  <a href="http://www.twitter.com/justinq">Tweet me</a> why don't you.
+Made by <a href="http://justinq.github.com/">Justin Quillinan</a> in about a day <a href="https://github.com/justinq/footfall">[source]</a>.  <a href="http://www.twitter.com/justinq">Tweet me</a> why don't you.
 </p>
 <p style="font-family:arial;color:gray;font-size:12px;">
     A visualisation for <a href="http://culturehackscotland.com">Culture Hack Scotland</a> based on the <a href="http://culturehackscotland.com/datasets/edinburghfootfalldata2010FULL.xls" target="_blank">2010 Edinburgh footfall data</a> published by the City of Edinburgh Council.</b>
