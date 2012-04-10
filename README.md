@@ -1,5 +1,6 @@
 ---
 title: Footfall Clock
+date: 08 May, 2011
 description: The footfall clock is a visualisation made for Culture Hack Scotland, 2011. It's based on the 2010 Edinburgh footfall data published by the City of Edinburgh Council. It shows the foot traffic at 19 different locations over the course of a year in the City of Edinburgh.
 thumbnail: footfall.png
 ---
