@@ -5,9 +5,9 @@ description: The footfall clock is a visualisation made for Culture Hack Scotlan
 thumbnail: footfall.png
 ---
 
-<script type="text/javascript" src="jCanvaScript.js"> </script>
-<script type="text/javascript" src="footfalldata.js"> </script>
-<script type="text/javascript" src="footfall.js"> </script>
+<script type="text/javascript" src="js/jCanvaScript.js"> </script>
+<script type="text/javascript" src="js/footfalldata.js"> </script>
+<script type="text/javascript" src="js/footfall.js"> </script>
 
 Click below to start/pause the visualisation.  Read the [description](#description).
  
