@@ -18,6 +18,9 @@ var dragging = false;
 // start animation on a canvas
 function start(idCanvas)
 {
+    if (running)
+        return;
+
     var i = 0,
       pos;
 
@@ -38,6 +41,8 @@ function start(idCanvas)
       points[i] = jc.circle(pos[1] + offsets[1], 2 * centre[1] - (pos[0] + offsets[0]), 0, 'rgba(128, 128, 128, 0.5)', 1);
     }
     // start
+    canvas = document.getElementById(idCanvas);
+    canvas.addEventListener("click", toggle, false);
     running = true;
     set_day(0);
 }
@@ -57,6 +62,11 @@ function pause()
 function resume()
 {
     running = true;
+}
+
+function toggle()
+{
+    running = !running;
 }
 
 function set_day(d)
